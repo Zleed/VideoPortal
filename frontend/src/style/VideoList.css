@@ -1,0 +1,18 @@
+.slick-prev {
+    height: 250px;
+    width: 20px;
+    left: 1% !important;
+    z-index: 1;
+}
+.slick-next {
+    height: 250px;
+    width: 20px;
+    right: 1% !important;
+    z-index: 1;
+}
+.slide-title {
+    padding-left: 1.5%;
+    text-align: left;
+    color: white;
+}
+
