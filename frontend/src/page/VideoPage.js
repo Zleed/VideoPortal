@@ -28,7 +28,7 @@ export default function VideoPage(props) {
 
     useEffect(() => {
         videoMethod.getVideoById(id);
-    }, [recommendationList]);
+    }, []);
 
     return (
         <>

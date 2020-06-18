@@ -8,7 +8,7 @@ export default function HomePage() {
 
     useEffect(() => {
         videoMethod.getAllVideo();
-    }, [videoList]);
+    }, []);
 
 
     return (

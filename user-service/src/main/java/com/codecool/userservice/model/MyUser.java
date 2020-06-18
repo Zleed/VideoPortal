@@ -1,5 +1,6 @@
 package com.codecool.userservice.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -19,8 +20,7 @@ public class MyUser {
 
     private String name;
 
-    private String email;
-
+    @JsonIgnore
     private String password;
 
     @Singular("roles")
