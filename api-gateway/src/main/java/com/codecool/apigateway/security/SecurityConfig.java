@@ -1,4 +1,4 @@
-package com.codecool.userservice.security;
+package com.codecool.apigateway.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -29,8 +29,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests()
                 .antMatchers("/auth/**").permitAll()// allowed by anyone
-//                .antMatchers(HttpMethod.GET, "/**").permitAll() // allowed only when signed in
-                .antMatchers(HttpMethod.GET, "/**").authenticated()
+                .antMatchers(HttpMethod.GET, "/**").permitAll() // allowed only when signed in
+                .antMatchers(HttpMethod.POST, "/**").authenticated()
 //                .anyRequest().authenticated() // anything else is denied
                 .and()
                 .addFilterBefore(new JwtTokenFilter(jwtTokenService), UsernamePasswordAuthenticationFilter.class);
