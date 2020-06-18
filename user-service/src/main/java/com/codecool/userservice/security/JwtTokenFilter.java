@@ -13,18 +13,18 @@ import java.io.IOException;
 
 public class JwtTokenFilter extends GenericFilterBean {
 
-    private JwtTokenService jwtTokenServices;
+    private JwtTokenService jwtTokenService;
 
     JwtTokenFilter(JwtTokenService jwtTokenServices) {
-        this.jwtTokenServices = jwtTokenServices;
+        this.jwtTokenService = jwtTokenServices;
     }
 
     // this is called for every request that comes in (unless its filtered out before in the chain)
     @Override
     public void doFilter(ServletRequest req, ServletResponse res, FilterChain filterChain) throws IOException, ServletException {
-        String token = jwtTokenServices.getTokenFromRequest((HttpServletRequest) req);
-        if (token != null && jwtTokenServices.validateToken(token)) {
-            Authentication auth = jwtTokenServices.parseUserFromTokenInfo(token);
+        String token = jwtTokenService.getTokenFromRequest((HttpServletRequest) req);
+        if (token != null && jwtTokenService.validateToken(token)) {
+            Authentication auth = jwtTokenService.parseUserFromTokenInfo(token);
             // Marks the user as authenticated.
             // If this code does not run, the request will fail for routes that are configured to need authentication
             SecurityContextHolder.getContext().setAuthentication(auth);
