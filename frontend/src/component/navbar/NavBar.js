@@ -1,9 +1,10 @@
 import AppBar from "@material-ui/core/AppBar/AppBar";
 import {Button, ButtonGroup, makeStyles, Toolbar} from "@material-ui/core";
-import React from "react";
+import React, {useContext} from "react";
 import {red} from "@material-ui/core/colors";
 import {useHistory} from "react-router-dom";
 import ShareVideo from "../video/ShareVideo";
+import {UserContext} from "../../context/UserContext";
 
 const useStyles = makeStyles(() => ({
     navBar: {
@@ -22,7 +23,8 @@ const useStyles = makeStyles(() => ({
         fontWeight: "bold",
         fontSize: 16,
         height: 60,
-        justifySelf: "right"
+        justifyContent: "right",
+        align: "right"
     }
 }));
 
@@ -30,6 +32,7 @@ export default function NavBar() {
 
     const classes = useStyles();
     const history = useHistory();
+    const {userMethod} = useContext(UserContext);
 
     const HomeClickEvent = () => {
         history.push("/")
@@ -44,8 +47,9 @@ export default function NavBar() {
                         <Button className={classes.button}>Featured</Button>
                         <Button className={classes.button}>Top Rated</Button>
                         <Button className={classes.button}>All Video</Button>
-                        <Button className={classes.shareButton}>Share Video</Button>
                     </ButtonGroup>
+                    <Button className={classes.shareButton}>Share Video</Button>
+                    <Button onClick={userMethod.logout} className={classes.shareButton}>Logout</Button>
                 </Toolbar>
             </AppBar>
             <br/><br/><br/>

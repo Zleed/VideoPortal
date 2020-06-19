@@ -1,10 +1,12 @@
 import React, {createContext, useState} from "react";
 import Axios from "axios";
+import Cookies from "universal-cookie/cjs/Cookies";
 
 export const VideoContext = createContext();
 
 export function VideoProvider(props) {
 
+    const cookies = new Cookies();
     const [videoList, setVideoList] = useState([]);
     const [recommendationList, setRecommendationList] = useState([]);
     const [video, setVideo] = useState({});
@@ -16,6 +18,7 @@ export function VideoProvider(props) {
                     setVideoList(res.data);
                 })
         },
+
         getVideoById: (id) => {
             Axios.get(`http://localhost:8762/video-service/video/${id}`)
                 .then((res) => {
@@ -23,6 +26,7 @@ export function VideoProvider(props) {
                     setRecommendationList(res.data.recommendationList)
                 })
         },
+
         postVideo: (data) => {
             data.preventDefault();
             Axios.post(`http://localhost:8762/video-service/video`, {
@@ -32,13 +36,16 @@ export function VideoProvider(props) {
                 headers: {
                     "Content-type": "application/json",
                     "Access-Control-Allow-Origin": "http://localhost:3000",
-                    'Accept': 'application/json'
+                    "Accept": "application/json",
+                    "Authorization": `Bearer ${cookies.get('jwt')}`
                 }
             }).then(res => {
+                    console.log(cookies.get("jwt"));
                     console.log(res.data);
                 }
             )
         },
+
         postRecommendation: (data) => {
             data.preventDefault();
             Axios.post(`http://localhost:8762/video-service/video/${data.target.videoId.value}`, {
@@ -49,7 +56,8 @@ export function VideoProvider(props) {
                 headers: {
                     "Content-type": "application/json",
                     "Access-Control-Allow-Origin": "http://localhost:3000",
-                    'Accept': 'application/json'
+                    "Accept": "application/json",
+                    "Authorization": `Bearer ${cookies.get('jwt')}`
                 }
             }).then(res => {
                     console.log(res.data);

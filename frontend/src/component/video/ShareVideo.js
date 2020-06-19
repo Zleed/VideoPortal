@@ -8,7 +8,7 @@ const useStyles = makeStyles(() => ({
     textField: {
         weight: "100%",
         resize: "none",
-        border: "outlined"
+        border: "outlined",
     },
     paper: {
         maxWidth: "30%",
@@ -36,10 +36,7 @@ export default function ShareVideo() {
     return (
         <Paper className={classes.paper}>
             <form onSubmit={videoMethod.postVideo} noValidate autoComplete="off">
-                <Grid container
-                      direction="row"
-                      justify="space-between"
-                      alignItems="center">
+                <Grid container direction="row" justify="space-between" alignItems="center">
                     <Grid item>
                         <TextField name="name" id="outlined-basic" label="Title" variant="outlined"/>
                     </Grid>
