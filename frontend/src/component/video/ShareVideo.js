@@ -1,8 +1,9 @@
-import React, {useContext, useEffect} from "react";
+import React, {useContext} from "react";
 import {makeStyles, Paper, TextField} from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import {VideoContext} from "../../context/VideoContext";
+import {UserContext} from "../../context/UserContext";
 
 const useStyles = makeStyles(() => ({
     textField: {
@@ -30,11 +31,11 @@ const useStyles = makeStyles(() => ({
 export default function ShareVideo() {
 
     const {videoMethod} = useContext(VideoContext);
+    const {userMethod} = useContext(UserContext);
     const classes = useStyles();
 
-
     return (
-        <Paper className={classes.paper}>
+        <Paper className={classes.paper} hidden={userMethod.ifSinged()}>
             <form onSubmit={videoMethod.postVideo} noValidate autoComplete="off">
                 <Grid container direction="row" justify="space-between" alignItems="center">
                     <Grid item>

@@ -16,7 +16,7 @@ const useStyles = makeStyles(() => ({
         fontWeight: "bold",
         fontSize: 16,
         height: 60,
-        width: 113
+        width: 113,
     },
     shareButton: {
         color: "#ffffff",

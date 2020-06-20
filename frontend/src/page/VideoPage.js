@@ -4,7 +4,6 @@ import Recommendation from "../component/recommendation/Recommendation";
 import Table from "@material-ui/core/Table";
 import RecommendationForm from "../component/recommendation/RecommendationForm";
 import {VideoContext} from "../context/VideoContext";
-import TableHead from "@material-ui/core/TableHead";
 
 const useStyles = makeStyles(() => ({
     textField: {
@@ -30,21 +29,31 @@ export default function VideoPage(props) {
         videoMethod.getVideoById(id);
     }, []);
 
+    const videoPlayer = () => {
+        return (
+            <iframe width="100%" height="630" src={video.url} frameBorder="0"
+                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen/>)
+    };
+
+    const recommendations = () => {
+        return (
+            <Table>
+                <TableBody>
+                    <RecommendationForm/>
+                    {recommendationList.map(recommendation =>
+                        <Recommendation recommendation={recommendation}/>
+                    )}
+                </TableBody>
+            </Table>)
+    };
+
     return (
         <>
             <br/>
             <Paper className={classes.paper}>
-                <iframe width="100%" height="630" src={video.url} frameBorder="0"
-                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                        allowFullScreen/>
-                <Table>
-                    <TableBody>
-                        <RecommendationForm/>
-                        {recommendationList.map(recommendation =>
-                            <Recommendation recommendation={recommendation}/>
-                        )}
-                    </TableBody>
-                </Table>
+                {videoPlayer()}
+                {recommendations()}
             </Paper>
             <br/>
         </>

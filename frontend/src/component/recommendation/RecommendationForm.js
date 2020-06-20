@@ -6,6 +6,7 @@ import Rating from "@material-ui/lab/Rating";
 import {blue} from "@material-ui/core/colors";
 import Button from "@material-ui/core/Button";
 import {VideoContext} from "../../context/VideoContext";
+import {UserContext} from "../../context/UserContext";
 
 const useStyles = makeStyles(() => ({
     textField: {
@@ -37,17 +38,15 @@ export default function RecommendationForm() {
     const classes = useStyles();
     const [value, setValue] = useState(3);
     const {video, videoMethod} = useContext(VideoContext);
+    const {userMethod} = useContext(UserContext);
 
 
-    return (
-        <TableRow>
-            <TableCell>
-                <Avatar aria-label="recipe" className={classes.avatar}>
-                    Me
-                </Avatar>
-            </TableCell>
-            <TableCell colSpan={3} className={classes.cell}>
-                <form onSubmit={videoMethod.postRecommendation}>
+    const avatar = () => {
+        return !userMethod.ifSinged() ? <Avatar aria-label="recipe" className={classes.avatar} >Me</Avatar> : null;
+    };
+
+    const form = () => {
+        return <form onSubmit={videoMethod.postRecommendation} hidden={userMethod.ifSinged()}>
                     <input name="videoId" value={video.id} hidden/>
                     <Rating name="rating" value={value} onChange={(event, newValue) => {
                         setValue(newValue);
@@ -57,6 +56,15 @@ export default function RecommendationForm() {
                               placeholder="Comment"/>
                     <Button type={"submit"} className={classes.button}>Post</Button>
                 </form>
+    };
+
+    return (
+        <TableRow>
+            <TableCell>
+                {avatar()}
+            </TableCell>
+            <TableCell colSpan={3} className={classes.cell}>
+                {form()}
             </TableCell>
         </TableRow>
     );
