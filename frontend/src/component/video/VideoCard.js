@@ -14,12 +14,16 @@ import {Link} from "react-router-dom";
 
 const useStyles = makeStyles(() => ({
     card: {
-        maxWidth: 420,
+        maxWidth: "90%",
         margin: "auto",
     },
     avatar: {
         backgroundColor: red[700],
     },
+    img: {
+        width: "100%",
+        maxHeight: "238px"
+    }
 }));
 
 export default function VideoCard(props) {
@@ -43,7 +47,7 @@ export default function VideoCard(props) {
             />
 
             <Link to={`/video/${props.video.id}`}>
-                <img width="420" height="238" src={`http://i3.ytimg.com/vi/${props.video.youTubeId}/0.jpg`}/>
+                <img className={classes.img} src={`http://i3.ytimg.com/vi/${props.video.youTubeId}/0.jpg`}/>
             </Link>
 
             <CardActions disableSpacing>
