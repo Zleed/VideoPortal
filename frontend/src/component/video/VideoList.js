@@ -78,8 +78,6 @@ const settings = {
 };
 
 export default function VideoList(props) {
-
-
     return (
         <>
             <h1 className="slide-title">{props.title}</h1>

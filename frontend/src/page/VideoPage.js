@@ -12,10 +12,18 @@ const useStyles = makeStyles(() => ({
         border: "outlined"
     },
     paper: {
-        maxWidth: "58%",
-        padding: "1%",
+        width: "80vw",
         margin: "auto",
+        marginTop: "5%",
+        padding: "5%",
+        maxWidth: 1000
     },
+    video: {
+        width: "100%",
+        height: "50vw",
+        maxHeight: 500,
+        maxWidth: 900
+    }
 }));
 
 export default function VideoPage(props) {
@@ -31,7 +39,7 @@ export default function VideoPage(props) {
 
     const videoPlayer = () => {
         return (
-            <iframe width="100%" height="630" src={video.url} frameBorder="0"
+            <iframe className={classes.video} src={video.url} frameBorder="0"
                     allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen/>)
     };

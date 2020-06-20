@@ -15,16 +15,15 @@ const useStyles = makeStyles(() => ({
         color: "#ffffff",
         fontWeight: "bold",
         fontSize: 16,
-        height: 60,
-        width: 113,
+        height: "3em",
+        width: "7em",
     },
     shareButton: {
         color: "#ffffff",
         fontWeight: "bold",
         fontSize: 16,
-        height: 60,
-        justifyContent: "right",
-        align: "right"
+        height: "3em",
+        width: "7em",
     }
 }));
 
@@ -45,11 +44,11 @@ export default function NavBar() {
                     <ButtonGroup variant="text" color="inherit" aria-label="text primary button group">
                         <Button onClick={HomeClickEvent} className={classes.button}>Home</Button>
                         <Button className={classes.button}>Featured</Button>
-                        <Button className={classes.button}>Top Rated</Button>
-                        <Button className={classes.button}>All Video</Button>
-                    </ButtonGroup>
-                    <Button className={classes.shareButton}>Share Video</Button>
+                        <Button className={classes.button}>Top</Button>
+                        <Button className={classes.button}>All</Button>
+                        <Button className={classes.shareButton}>Share</Button>
                     <Button onClick={userMethod.logout} className={classes.shareButton}>Logout</Button>
+                    </ButtonGroup>
                 </Toolbar>
             </AppBar>
             <br/><br/><br/>

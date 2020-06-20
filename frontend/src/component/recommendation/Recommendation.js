@@ -4,10 +4,14 @@ import {makeStyles, TableCell, TableRow} from "@material-ui/core";
 import {red} from "@material-ui/core/colors";
 import Typography from "@material-ui/core/Typography";
 import Rating from "@material-ui/lab/Rating";
+import Grid from "@material-ui/core/Grid";
 
 const useStyles = makeStyles(() => ({
     avatar: {
         backgroundColor: red[700],
+    },
+    rating: {
+        marginLeft: "25px"
     },
 }));
 
@@ -15,18 +19,18 @@ export default function Recommendation(props) {
     const classes = useStyles();
     return (
         <TableRow>
-            <TableCell>
-                <Avatar aria-label="recipe" className={classes.avatar}>
-                    R
-                </Avatar>
-            </TableCell>
-            <TableCell colSpan={3} >
-                <Typography>
-                    {props.recommendation.comment}
-                </Typography>
-            </TableCell>
-            <TableCell>
-                <Rating name="read-only" value={props.recommendation.rating} readOnly/>
+            <TableCell colSpan={6}>
+                <Rating className={classes.rating} name="read-only" value={props.recommendation.rating} readOnly/>
+                <Grid container wrap="nowrap" spacing={2}>
+                    <Grid item>
+                        <Avatar aria-label="recipe" className={classes.avatar}>R</Avatar>
+                    </Grid>
+                    <Grid item xs>
+                        <Typography>
+                            {props.recommendation.comment}
+                        </Typography>
+                    </Grid>
+                </Grid>
             </TableCell>
         </TableRow>
     );

@@ -1,12 +1,12 @@
 import React, {useContext, useState} from "react";
-import {Box, makeStyles, TableCell, TableRow} from "@material-ui/core";
+import {makeStyles, TableCell, TableRow} from "@material-ui/core";
 import Avatar from "@material-ui/core/Avatar";
-import TextareaAutosize from "@material-ui/core/TextareaAutosize";
 import Rating from "@material-ui/lab/Rating";
 import {blue} from "@material-ui/core/colors";
 import Button from "@material-ui/core/Button";
 import {VideoContext} from "../../context/VideoContext";
 import {UserContext} from "../../context/UserContext";
+import Grid from "@material-ui/core/Grid";
 
 const useStyles = makeStyles(() => ({
     textField: {
@@ -19,7 +19,6 @@ const useStyles = makeStyles(() => ({
         backgroundColor: blue[700],
     },
     button: {
-        display: "inline-block",
         backgroundColor: "#388e3c",
         color: "#ffffff",
         fontWeight: "bold",
@@ -30,6 +29,10 @@ const useStyles = makeStyles(() => ({
     },
     cell: {
         width: "100%"
+    },
+    right: {
+        width: "100%",
+        justifyContent: "right"
     }
 }));
 
@@ -40,31 +43,28 @@ export default function RecommendationForm() {
     const {video, videoMethod} = useContext(VideoContext);
     const {userMethod} = useContext(UserContext);
 
-
-    const avatar = () => {
-        return !userMethod.ifSinged() ? <Avatar aria-label="recipe" className={classes.avatar} >Me</Avatar> : null;
-    };
-
-    const form = () => {
-        return <form onSubmit={videoMethod.postRecommendation} hidden={userMethod.ifSinged()}>
-                    <input name="videoId" value={video.id} hidden/>
-                    <Rating name="rating" value={value} onChange={(event, newValue) => {
-                        setValue(newValue);
-                    }}/>
-                    <textarea name={"comment"} rows={6} className={classes.textField}
-                              aria-label="empty textarea"
-                              placeholder="Comment"/>
-                    <Button type={"submit"} className={classes.button}>Post</Button>
-                </form>
-    };
-
     return (
         <TableRow>
             <TableCell>
-                {avatar()}
-            </TableCell>
-            <TableCell colSpan={3} className={classes.cell}>
-                {form()}
+                <form onSubmit={videoMethod.postRecommendation} hidden={userMethod.ifSinged()}>
+                    <input name="videoId" value={video.id} hidden/>
+                    <Grid direction="column">
+                        <Grid item>
+                            <Rating name="rating" value={value}
+                                    onChange={(event, newValue) => {
+                                        setValue(newValue);
+                                    }}/>
+                        </Grid>
+                        <Grid item>
+                            <textarea name={"comment"} rows={6} className={classes.textField}
+                                      aria-label="empty textarea"
+                                      placeholder="Comment"/>
+                        </Grid>
+                        <Grid container alignItems="flex-start" justify="flex-end" direction="row">
+                            <Button type={"submit"} className={classes.button}>Post</Button>
+                        </Grid>
+                    </Grid>
+                </form>
             </TableCell>
         </TableRow>
     );

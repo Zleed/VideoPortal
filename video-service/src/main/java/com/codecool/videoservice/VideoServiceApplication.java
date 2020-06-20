@@ -63,6 +63,22 @@ public class VideoServiceApplication {
                     .name("Sub Focus - Solar System")
                     .url("https://www.youtube.com/embed/hRgcgcTP7nM")
                     .build();
+            Video video9 = Video.builder()
+                    .name("Sub Focus - Solar System")
+                    .url("https://www.youtube.com/embed/UK15xIMc1DY")
+                    .build();
+            Video video10 = Video.builder()
+                    .name("Bohemian Rhapsody | Muppet Music Video")
+                    .url("https://www.youtube.com/embed/tgbNymZ7vqY")
+                    .build();
+            Video video11 = Video.builder()
+                    .name("React JS Crash Course")
+                    .url("https://www.youtube.com/embed/sBws8MSXN7A")
+                    .build();
+            Video video12 = Video.builder()
+                    .name("Sub Focus - Solar System")
+                    .url("https://www.youtube.com/embed/hRgcgcTP7nM")
+                    .build();
 
             videoService.save(video1);
             videoService.save(video2);
@@ -72,6 +88,10 @@ public class VideoServiceApplication {
             videoService.save(video6);
             videoService.save(video7);
             videoService.save(video8);
+            videoService.save(video9);
+            videoService.save(video10);
+            videoService.save(video11);
+            videoService.save(video12);
         };
     }
 
