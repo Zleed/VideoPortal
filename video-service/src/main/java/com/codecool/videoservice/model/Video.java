@@ -4,8 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.beans.factory.annotation.Value;
-
 import javax.persistence.*;
 
 @Data
@@ -24,6 +22,9 @@ public class Video {
     private String url;
 
     private String youTubeId;
+
+    @OneToOne(mappedBy = "video", cascade = CascadeType.ALL)
+    private Rating rating;
 
     @Transient
     private RecommendationModel[] recommendationList;

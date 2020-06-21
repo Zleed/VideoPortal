@@ -17,6 +17,9 @@ public class RecommendationServiceCaller {
     @Autowired
     private RestTemplate restTemplate;
 
+    @Autowired
+    private VideoService videoService;
+
     @Value("${video-recommendation-service.url}")
     private String baseUrl;
 
@@ -25,6 +28,7 @@ public class RecommendationServiceCaller {
     }
 
     public void save(long videoId, RecommendationModel recommendation) {
+        videoService.updateRating(videoId, recommendation.getRating());
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         HttpEntity<RecommendationModel> entity = new HttpEntity<>(recommendation, headers);

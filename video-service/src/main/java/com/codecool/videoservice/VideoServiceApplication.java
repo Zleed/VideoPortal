@@ -1,5 +1,6 @@
 package com.codecool.videoservice;
 
+import com.codecool.videoservice.model.Rating;
 import com.codecool.videoservice.model.RecommendationModel;
 import com.codecool.videoservice.model.Video;
 import com.codecool.videoservice.service.RecommendationServiceCaller;
@@ -85,21 +86,6 @@ public class VideoServiceApplication {
                     .url("https://www.youtube.com/watch?v=hRgcgcTP7nM")
                     .build();
 
-            RecommendationModel recommendation = RecommendationModel.builder()
-                    .comment("Good one")
-                    .rating(4)
-                    .videoId(1)
-                    .build();
-
-            RecommendationModel recommendation2 = RecommendationModel.builder()
-                    .comment("zero")
-                    .rating(1)
-                    .videoId(1)
-                    .build();
-
-            recommendationServiceCaller.save(1, recommendation);
-            recommendationServiceCaller.save(1, recommendation2);
-
             videoService.save(video1);
             videoService.save(video2);
             videoService.save(video3);
@@ -113,6 +99,14 @@ public class VideoServiceApplication {
             videoService.save(video11);
             videoService.save(video12);
 
+            for (int i = 1; i < 13; i++) {
+                RecommendationModel recommendation = RecommendationModel.builder()
+                    .comment("Good one")
+                    .rating(4)
+                    .videoId(i)
+                    .build();
+                recommendationServiceCaller.save(i, recommendation);
+            }
         };
     }
 

@@ -83,7 +83,7 @@ export default function VideoList(props) {
             <h1 className="slide-title">{props.title}</h1>
             <Slider {...settings}>
                 {props.videoList.map(video =>
-                    <VideoCard video={video}/>)}
+                    <VideoCard video={video} rating={video.rating}/>)}
             </Slider>
         </>
     );

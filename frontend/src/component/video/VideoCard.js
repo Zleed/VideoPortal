@@ -49,7 +49,7 @@ export default function VideoCard(props) {
             </Link>
 
             <CardActions disableSpacing>
-                <Rating name="read-only" value={4} readOnly/>
+                <Rating name="read-only" value={props.rating.rating} readOnly/>
                 <IconButton aria-label="add to favorites">
                     <FavoriteIcon/>
                 </IconButton>
