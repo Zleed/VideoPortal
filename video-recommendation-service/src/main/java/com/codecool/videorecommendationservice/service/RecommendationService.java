@@ -6,6 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -17,6 +18,7 @@ public class RecommendationService {
 
     public Recommendation[] getAllByVideoId(Long videoId) {
         List<Recommendation> recommendationList = recommendationRepository.findAllByVideoId(videoId);
+        Collections.reverse(recommendationList);
         Recommendation[] recommendationArray = new Recommendation[recommendationList.size()];
         return recommendationList.toArray(recommendationArray);
     }

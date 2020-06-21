@@ -42,7 +42,6 @@ public class VideoController {
 
     @PostMapping("/{videoId}")
     public void newRecommendation(@PathVariable("videoId") long videoId ,@RequestBody RecommendationModel recommendation) {
-        System.out.println(recommendation);
         recommendationServiceCaller.save(videoId, recommendation);
     }
 }

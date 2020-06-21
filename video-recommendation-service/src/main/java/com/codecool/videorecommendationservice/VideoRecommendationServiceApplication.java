@@ -26,26 +26,6 @@ public class VideoRecommendationServiceApplication {
 		SpringApplication.run(VideoRecommendationServiceApplication.class, args);
 	}
 
-    @Bean
-    public CommandLineRunner init() {
-        return args -> {
-            Recommendation recommendation = Recommendation.builder()
-                    .comment("Good one")
-                    .rating(4)
-                    .videoId(1)
-                    .build();
-
-            Recommendation recommendation2 = Recommendation.builder()
-                    .comment("zero")
-                    .rating(1)
-                    .videoId(1)
-                    .build();
-
-            recommendationService.save(recommendation);
-            recommendationService.save(recommendation2);
-        };
-    }
-
 	@Bean
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2)
