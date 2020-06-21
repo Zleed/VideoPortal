@@ -17,7 +17,6 @@ export default function App() {
                 <div className="App">
                     <UserProvider>
                         <VideoProvider>
-                            <NavBar/>
                             <Route path="/" exact component={HomePage}/>
                             <Route path="/video/:id" exact component={VideoPage}/>
                             <Route path="/share" exact component={ShareVideo}/>

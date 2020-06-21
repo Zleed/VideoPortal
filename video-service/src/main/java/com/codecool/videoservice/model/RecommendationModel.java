@@ -16,5 +16,4 @@ public class RecommendationModel {
 
     private long videoId;
 
-    private String port;
 }

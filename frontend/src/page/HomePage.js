@@ -1,6 +1,7 @@
 import React, {useContext, useEffect} from "react";
 import VideoList from "../component/video/VideoList";
 import {VideoContext} from "../context/VideoContext";
+import NavBar from "../component/navbar/NavBar";
 
 export default function HomePage() {
 
@@ -8,11 +9,12 @@ export default function HomePage() {
 
     useEffect(() => {
         videoMethod.getAllVideo();
-    }, []);
+    }, [videoList]);
 
 
     return (
         <>
+            <NavBar/>
             <VideoList title={"Featured"} videoList={videoList}/>
             <VideoList title={"Top Rated"} videoList={videoList}/>
             <VideoList title={"Popular"} videoList={videoList}/>

@@ -33,51 +33,51 @@ public class VideoServiceApplication {
         return args -> {
             Video video1 = Video.builder()
                     .name("Yungness & Jaminn - What To Do")
-                    .url("https://www.youtube.com/embed/fycpLiQGeEg")
+                    .url("https://www.youtube.com/watch?v=fycpLiQGeEg")
                     .build();
             Video video2 = Video.builder()
                     .name("Liquid Drum and Bass Mix #60")
-                    .url("https://www.youtube.com/embed/aJoo79OwZEI")
+                    .url("https://www.youtube.com/watch?v=aJoo79OwZEI")
                     .build();
             Video video3 = Video.builder()
                     .name("React JS Crash Course")
-                    .url("https://www.youtube.com/embed/sBws8MSXN7A")
+                    .url("https://www.youtube.com/watch?v=sBws8MSXN7A")
                     .build();
             Video video4 = Video.builder()
                     .name("Multi Step Form With React & Material UI")
-                    .url("https://www.youtube.com/embed/zT62eVxShsY")
+                    .url("https://www.youtube.com/watch?v=zT62eVxShsY")
                     .build();
             Video video5 = Video.builder()
                     .name("SOLID design principles")
-                    .url("https://www.youtube.com/embed/rtmFCcjEgEw")
+                    .url("https://www.youtube.com/watch?v=rtmFCcjEgEw")
                     .build();
             Video video6 = Video.builder()
                     .name("Bohemian Rhapsody | Muppet Music Video")
-                    .url("https://www.youtube.com/embed/tgbNymZ7vqY")
+                    .url("https://www.youtube.com/watch?v=tgbNymZ7vqY")
                     .build();
             Video video7 = Video.builder()
                     .name("Boris Brejcha Minimal Techno - Baby Yoda")
-                    .url("https://www.youtube.com/embed/BgAHDSyxDHg")
+                    .url("https://www.youtube.com/watch?v=BgAHDSyxDHg")
                     .build();
             Video video8 = Video.builder()
                     .name("Sub Focus - Solar System")
-                    .url("https://www.youtube.com/embed/hRgcgcTP7nM")
+                    .url("https://www.youtube.com/watch?v=hRgcgcTP7nM")
                     .build();
             Video video9 = Video.builder()
                     .name("Sub Focus - Solar System")
-                    .url("https://www.youtube.com/embed/UK15xIMc1DY")
+                    .url("https://www.youtube.com/watch?v=UK15xIMc1DY")
                     .build();
             Video video10 = Video.builder()
                     .name("Bohemian Rhapsody | Muppet Music Video")
-                    .url("https://www.youtube.com/embed/tgbNymZ7vqY")
+                    .url("https://www.youtube.com/watch?v=tgbNymZ7vqY")
                     .build();
             Video video11 = Video.builder()
                     .name("React JS Crash Course")
-                    .url("https://www.youtube.com/embed/sBws8MSXN7A")
+                    .url("https://www.youtube.com/watch?v=sBws8MSXN7A")
                     .build();
             Video video12 = Video.builder()
                     .name("Sub Focus - Solar System")
-                    .url("https://www.youtube.com/embed/hRgcgcTP7nM")
+                    .url("https://www.youtube.com/watch?v=hRgcgcTP7nM")
                     .build();
 
             videoService.save(video1);

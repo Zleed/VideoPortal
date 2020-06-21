@@ -8,9 +8,9 @@ import IconButton from '@material-ui/core/IconButton';
 import {red} from '@material-ui/core/colors';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
 import Rating from '@material-ui/lab/Rating';
 import {Link} from "react-router-dom";
+import VideoDetailsButton from "./VideoDetailsButton";
 
 const useStyles = makeStyles(() => ({
     card: {
@@ -38,9 +38,7 @@ export default function VideoCard(props) {
                     </Avatar>
                 }
                 action={
-                    <IconButton aria-label="settings">
-                        <MoreVertIcon/>
-                    </IconButton>
+                    <VideoDetailsButton/>
                 }
                 title={props.video.name}
                 subheader="September 14, 2016"

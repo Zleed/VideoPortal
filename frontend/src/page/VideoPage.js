@@ -4,6 +4,7 @@ import Recommendation from "../component/recommendation/Recommendation";
 import Table from "@material-ui/core/Table";
 import RecommendationForm from "../component/recommendation/RecommendationForm";
 import {VideoContext} from "../context/VideoContext";
+import NavBar from "../component/navbar/NavBar";
 
 const useStyles = makeStyles(() => ({
     textField: {
@@ -35,11 +36,11 @@ export default function VideoPage(props) {
 
     useEffect(() => {
         videoMethod.getVideoById(id);
-    }, []);
+    }, [recommendationList]);
 
     const videoPlayer = () => {
         return (
-            <iframe className={classes.video} src={video.url} frameBorder="0"
+            <iframe className={classes.video} src={`https://www.youtube.com/embed/${video.youTubeId}`} frameBorder="0"
                     allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen/>)
     };
@@ -58,6 +59,7 @@ export default function VideoPage(props) {
 
     return (
         <>
+            <NavBar/>
             <br/>
             <Paper className={classes.paper}>
                 {videoPlayer()}

@@ -28,8 +28,4 @@ public class Video {
     @Transient
     private RecommendationModel[] recommendationList;
 
-    @Transient
-    @Value("${server.port}")
-    private String port;
-
 }

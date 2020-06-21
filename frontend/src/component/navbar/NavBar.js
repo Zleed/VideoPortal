@@ -3,8 +3,8 @@ import {Button, ButtonGroup, makeStyles, Toolbar} from "@material-ui/core";
 import React, {useContext} from "react";
 import {red} from "@material-ui/core/colors";
 import {useHistory} from "react-router-dom";
-import ShareVideo from "../video/ShareVideo";
 import {UserContext} from "../../context/UserContext";
+import NavVideoButton from "./NavVideoButton";
 
 const useStyles = makeStyles(() => ({
     navBar: {
@@ -14,17 +14,10 @@ const useStyles = makeStyles(() => ({
     button: {
         color: "#ffffff",
         fontWeight: "bold",
-        fontSize: 16,
-        height: "3em",
+        fontSize: "0.8em",
+        height: "5em",
         width: "7em",
     },
-    shareButton: {
-        color: "#ffffff",
-        fontWeight: "bold",
-        fontSize: 16,
-        height: "3em",
-        width: "7em",
-    }
 }));
 
 export default function NavBar() {
@@ -36,6 +29,31 @@ export default function NavBar() {
     const HomeClickEvent = () => {
         history.push("/")
     };
+    const ShareClickEvent = () => {
+        history.push("/share")
+    };
+    const RegisterClickEvent = () => {
+        history.push("/register")
+    };
+    const LoginClickEvent = () => {
+        history.push("/login")
+    };
+    const LogoutClickEvent = () => {
+        userMethod.logout()
+    };
+
+    const LoginRegister = () => {
+        return (!userMethod.ifSinged()) ?
+            <ButtonGroup variant="text" color="inherit" aria-label="text primary button group">
+                <Button onClick={ShareClickEvent} className={classes.button}>Share</Button>
+                <Button onClick={LogoutClickEvent} className={classes.button}>Logout</Button>
+            </ButtonGroup>
+            :
+            <ButtonGroup variant="text" color="inherit" aria-label="text primary button group">
+                <Button onClick={LoginClickEvent} className={classes.button}>Login</Button>
+                <Button onClick={RegisterClickEvent} className={classes.button}>register</Button>
+            </ButtonGroup>
+    };
 
     return (
         <>
@@ -43,16 +61,12 @@ export default function NavBar() {
                 <Toolbar>
                     <ButtonGroup variant="text" color="inherit" aria-label="text primary button group">
                         <Button onClick={HomeClickEvent} className={classes.button}>Home</Button>
-                        <Button className={classes.button}>Featured</Button>
-                        <Button className={classes.button}>Top</Button>
-                        <Button className={classes.button}>All</Button>
-                        <Button className={classes.shareButton}>Share</Button>
-                    <Button onClick={userMethod.logout} className={classes.shareButton}>Logout</Button>
+                        <NavVideoButton btnstyle={classes.button}/>
                     </ButtonGroup>
+                    {LoginRegister()}
                 </Toolbar>
             </AppBar>
             <br/><br/><br/>
-            <ShareVideo/>
         </>
     );
 }

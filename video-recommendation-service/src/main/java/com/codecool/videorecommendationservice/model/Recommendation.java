@@ -27,8 +27,4 @@ public class Recommendation {
     private String comment;
 
     private long videoId;
-
-    @Transient
-    @Value("${server.port}")
-    private String port;
 }

@@ -3,6 +3,7 @@ import {makeStyles, Paper, TextField} from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import {UserContext} from "../context/UserContext";
+import NavBar from "../component/navbar/NavBar";
 
 const useStyles = makeStyles(() => ({
     textField: {
@@ -12,10 +13,11 @@ const useStyles = makeStyles(() => ({
     },
 
     paper: {
-
-        maxWidth: "18%",
+        width: "80vw",
+        maxWidth: 300,
         padding: "1%",
         margin: "auto",
+        marginTop: "5%",
     },
 
     button: {
@@ -37,6 +39,7 @@ export default function Login() {
 
     return (
         <>
+            <NavBar/>
             <br/>
             <Paper className={classes.paper}>
                 <h1>Welcome</h1>

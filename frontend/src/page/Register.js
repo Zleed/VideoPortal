@@ -1,8 +1,9 @@
-import React, {useContext, useEffect} from "react";
-import {makeStyles, Paper, TableBody, TextField} from "@material-ui/core";
+import React, {useContext} from "react";
+import {makeStyles, Paper, TextField} from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import {UserContext} from "../context/UserContext";
+import NavBar from "../component/navbar/NavBar";
 
 const useStyles = makeStyles(() => ({
     textField: {
@@ -12,9 +13,11 @@ const useStyles = makeStyles(() => ({
     },
 
     paper: {
-        maxWidth: "18%",
+        width: "80vw",
+        maxWidth: 300,
         padding: "1%",
         margin: "auto",
+        marginTop: "5%",
     },
 
     button: {
@@ -36,19 +39,18 @@ export default function Login(props) {
 
     return (
         <>
+            <NavBar/>
             <br/>
             <Paper className={classes.paper}>
                 <h1>Welcome</h1>
                 <form onSubmit={userMethod.signUp} noValidate autoComplete="off">
                     <Grid container direction="column" alignItems="center">
                         <Grid item>
-                            <TextField type="text" name="username" id="outlined-basic" label="Username"
-                                       variant="outlined" required/>
+                            <TextField type="text" name="username" id="outlined-basic" label="Username" variant="outlined" required/>
                         </Grid>
                         <br/>
                         <Grid item>
-                            <TextField type="password" name="password" id="outlined-basic" label="Password"
-                                       variant="outlined" required/>
+                            <TextField type="password" name="password" id="outlined-basic" label="Password" variant="outlined" required/>
                         </Grid>
                         <br/>
                         <Grid item>

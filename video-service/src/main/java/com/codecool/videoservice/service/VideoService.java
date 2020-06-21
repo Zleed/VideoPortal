@@ -21,7 +21,8 @@ public class VideoService {
     }
 
     public Video save(Video video) {
-        String youTubeId = video.getUrl().split("embed/")[1];
+        String youTubeId = video.getUrl().split("=")[1].replaceAll("&t", "");
+        video.setUrl("https://www.youtube.com/embed/"+youTubeId);
         video.setYouTubeId(youTubeId);
         videoRepository.save(video);
         return video;

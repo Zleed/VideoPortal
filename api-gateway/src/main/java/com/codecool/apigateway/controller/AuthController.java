@@ -61,7 +61,7 @@ public class AuthController {
     }
 
     @PostMapping("/register")
-    public MyUser register(@RequestBody UserCredentials user){
+    public MyUser register(@RequestBody UserCredentials user) {
         return userService.register(user);
     }
 

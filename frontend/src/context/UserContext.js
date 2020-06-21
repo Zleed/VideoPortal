@@ -1,4 +1,4 @@
-import React, {createContext} from "react";
+import React, {createContext, useState} from "react";
 import Axios from "axios";
 import Cookies from 'universal-cookie';
 import {useHistory} from "react-router-dom";
@@ -9,9 +9,6 @@ export function UserProvider(props) {
 
     const cookies = new Cookies();
     const history = useHistory();
-    let ifSinged = false;
-
-    console.log(ifSinged);
 
     const userMethod = {
 
@@ -22,10 +19,9 @@ export function UserProvider(props) {
                 password: data.target.password.value
             }).then(res => {
                 cookies.set('jwt', res.data.token, {path:"/", maxAge: 36000});
-                ifSinged = true;
                 history.push("/")
             }).catch(e => {
-                alert(e);
+                alert("Bad username/password")
             });
         },
 
@@ -36,21 +32,22 @@ export function UserProvider(props) {
                 password: data.target.password.value
             }).then(res => {
                 console.log(res.data);
-            });
-            history.push("/")
+                history.push("/")
+            }).catch( e =>
+                alert("Username is already taken")
+            );
         },
 
         logout: () => {
             cookies.remove("jwt");
-            ifSinged = false;
             alert("Logged out.")
         },
 
         ifSinged: () => {
-            return !ifSinged;
+            return (cookies.get("jwt") === undefined);
         }
     };
-//TODO -cookies from value
+
     return (
         <UserContext.Provider value={{userMethod}}>
             {props.children}

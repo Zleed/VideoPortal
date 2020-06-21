@@ -4,6 +4,7 @@ import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import {VideoContext} from "../../context/VideoContext";
 import {UserContext} from "../../context/UserContext";
+import NavBar from "../navbar/NavBar";
 
 const useStyles = makeStyles(() => ({
     textField: {
@@ -12,9 +13,11 @@ const useStyles = makeStyles(() => ({
         border: "outlined",
     },
     paper: {
-        maxWidth: "30%",
+        width: "80vw",
+        maxWidth: 300,
         padding: "1%",
-        margin: "auto"
+        margin: "auto",
+        marginTop: "200px",
     },
     button: {
         backgroundColor: "#388e3c",
@@ -34,21 +37,32 @@ export default function ShareVideo() {
     const {userMethod} = useContext(UserContext);
     const classes = useStyles();
 
+    const message = () => {
+        return (userMethod.ifSinged()) ? <h1>Login to share videos</h1> : <h1>Welcome</h1>
+    };
+
     return (
-        <Paper className={classes.paper} hidden={userMethod.ifSinged()}>
-            <form onSubmit={videoMethod.postVideo} noValidate autoComplete="off">
-                <Grid container direction="row" justify="space-between" alignItems="center">
-                    <Grid item>
-                        <TextField name="name" id="outlined-basic" label="Title" variant="outlined"/>
+        <>
+            <NavBar/>
+            <Paper className={classes.paper}>
+                {message()}
+                <form onSubmit={videoMethod.postVideo} noValidate autoComplete="off" hidden={userMethod.ifSinged()}>
+                    <Grid container direction="column" alignItems="center">
+                        <Grid item>
+                            <TextField name="name" id="outlined-basic" label="Title" variant="outlined"/>
+                        </Grid>
+                        <br/>
+                        <Grid item>
+                            <TextField name="url" id="outlined-basic" label="YouTube URL" variant="outlined"/>
+                        </Grid>
+                        <br/>
+                        <Grid item>
+                            <Button type="submit" className={classes.button}>Share</Button>
+                        </Grid>
+                        <br/>
                     </Grid>
-                    <Grid item>
-                        <TextField name="url" id="outlined-basic" label="YouTube URL" variant="outlined"/>
-                    </Grid>
-                    <Grid item>
-                        <Button type="submit" className={classes.button}>Share</Button>
-                    </Grid>
-                </Grid>
-            </form>
-        </Paper>
+                </form>
+            </Paper>
+        </>
     );
 }
