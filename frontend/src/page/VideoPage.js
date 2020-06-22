@@ -5,6 +5,7 @@ import Table from "@material-ui/core/Table";
 import RecommendationForm from "../component/recommendation/RecommendationForm";
 import {VideoContext} from "../context/VideoContext";
 import NavBar from "../component/navbar/NavBar";
+import {UserContext} from "../context/UserContext";
 
 const useStyles = makeStyles(() => ({
     textField: {
@@ -33,10 +34,11 @@ export default function VideoPage(props) {
 
     const id = props.match.params.id;
     const {video, recommendationList, videoMethod} = useContext(VideoContext);
+    const {flag} = useContext(UserContext);
 
     useEffect(() => {
         videoMethod.getVideoById(id);
-    }, [recommendationList]);
+    }, [flag]);
 
     const videoPlayer = () => {
         return (

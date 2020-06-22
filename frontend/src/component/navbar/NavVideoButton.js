@@ -50,7 +50,7 @@ export default function NavVideoButton(props) {
                 aria-haspopup="true"
                 onClick={handleToggle}
             >
-                Video
+                Videos
             </Button>
             <Popper open={open} anchorEl={anchorRef.current} role={undefined} transition disablePortal>
                 {({TransitionProps, placement}) => (

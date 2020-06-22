@@ -7,7 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -26,6 +26,7 @@ public class VideoService {
         video.setUrl("https://www.youtube.com/embed/"+youTubeId);
         video.setYouTubeId(youTubeId);
         video.setRating(buildRating(video));
+        video.setDate(LocalDateTime.now());
         videoRepository.save(video);
         return video;
     }
@@ -36,13 +37,7 @@ public class VideoService {
 
     public void updateRating(long videoId, int rating) {
         Video video = getVideoBy(videoId);
-        try {
-            video.getRating().update(rating);
-        } catch (NullPointerException e) {
-            Rating newRating = buildRating(video);
-            newRating.update(rating);
-            video.setRating(newRating);
-        }
+        video.getRating().update(rating);
         videoRepository.save(video);
     }
 

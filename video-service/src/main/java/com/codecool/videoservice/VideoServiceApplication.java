@@ -40,50 +40,62 @@ public class VideoServiceApplication {
             Video video1 = Video.builder()
                     .name("Yungness & Jaminn - What To Do")
                     .url("https://www.youtube.com/watch?v=fycpLiQGeEg")
+                    .userId(1)
                     .build();
             Video video2 = Video.builder()
                     .name("Liquid Drum and Bass Mix #60")
                     .url("https://www.youtube.com/watch?v=aJoo79OwZEI")
+                    .userId(1)
                     .build();
             Video video3 = Video.builder()
                     .name("React JS Crash Course")
                     .url("https://www.youtube.com/watch?v=sBws8MSXN7A")
+                    .userId(1)
                     .build();
             Video video4 = Video.builder()
                     .name("Multi Step Form With React & Material UI")
                     .url("https://www.youtube.com/watch?v=zT62eVxShsY")
+                    .userId(1)
                     .build();
             Video video5 = Video.builder()
                     .name("SOLID design principles")
                     .url("https://www.youtube.com/watch?v=rtmFCcjEgEw")
+                    .userId(1)
                     .build();
             Video video6 = Video.builder()
                     .name("Bohemian Rhapsody | Muppet Music Video")
                     .url("https://www.youtube.com/watch?v=tgbNymZ7vqY")
+                    .userId(1)
                     .build();
             Video video7 = Video.builder()
                     .name("Boris Brejcha Minimal Techno - Baby Yoda")
                     .url("https://www.youtube.com/watch?v=BgAHDSyxDHg")
+                    .userId(1)
                     .build();
             Video video8 = Video.builder()
                     .name("Sub Focus - Solar System")
                     .url("https://www.youtube.com/watch?v=hRgcgcTP7nM")
+                    .userId(1)
                     .build();
             Video video9 = Video.builder()
                     .name("Sub Focus - Solar System")
                     .url("https://www.youtube.com/watch?v=UK15xIMc1DY")
+                    .userId(1)
                     .build();
             Video video10 = Video.builder()
                     .name("Bohemian Rhapsody | Muppet Music Video")
                     .url("https://www.youtube.com/watch?v=tgbNymZ7vqY")
+                    .userId(1)
                     .build();
             Video video11 = Video.builder()
                     .name("React JS Crash Course")
                     .url("https://www.youtube.com/watch?v=sBws8MSXN7A")
+                    .userId(1)
                     .build();
             Video video12 = Video.builder()
                     .name("Sub Focus - Solar System")
                     .url("https://www.youtube.com/watch?v=hRgcgcTP7nM")
+                    .userId(1)
                     .build();
 
             videoService.save(video1);
@@ -101,10 +113,11 @@ public class VideoServiceApplication {
 
             for (int i = 1; i < 13; i++) {
                 RecommendationModel recommendation = RecommendationModel.builder()
-                    .comment("Good one")
-                    .rating(4)
-                    .videoId(i)
-                    .build();
+                        .comment("Good one")
+                        .rating(4)
+                        .videoId(i)
+                        .userId(1)
+                        .build();
                 recommendationServiceCaller.save(i, recommendation);
             }
         };
@@ -122,7 +135,7 @@ public class VideoServiceApplication {
 
     @Bean
     @LoadBalanced
-    public RestTemplate restTemplate(){
+    public RestTemplate restTemplate() {
         return new RestTemplate();
     }
 }

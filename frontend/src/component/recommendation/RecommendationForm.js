@@ -7,6 +7,7 @@ import Button from "@material-ui/core/Button";
 import {VideoContext} from "../../context/VideoContext";
 import {UserContext} from "../../context/UserContext";
 import Grid from "@material-ui/core/Grid";
+import Cookies from "universal-cookie";
 
 const useStyles = makeStyles(() => ({
     textField: {
@@ -42,12 +43,14 @@ export default function RecommendationForm() {
     const [value, setValue] = useState(3);
     const {video, videoMethod} = useContext(VideoContext);
     const {userMethod} = useContext(UserContext);
+    const cookies = new Cookies();
 
     return (
         <TableRow>
             <TableCell>
                 <form onSubmit={videoMethod.postRecommendation} hidden={userMethod.ifSinged()}>
                     <input name="videoId" value={video.id} hidden/>
+                    <input name="userId" value={cookies.get("userId")} hidden/>
                     <Grid direction="column">
                         <Grid item>
                             <Rating name="rating" value={value}
@@ -58,7 +61,7 @@ export default function RecommendationForm() {
                         <Grid item>
                             <textarea name={"comment"} rows={6} className={classes.textField}
                                       aria-label="empty textarea"
-                                      placeholder="Comment"/>
+                                      placeholder="Comment" maxLength={2000} />
                         </Grid>
                         <Grid container alignItems="flex-start" justify="flex-end" direction="row">
                             <Button type={"submit"} className={classes.button}>Post</Button>

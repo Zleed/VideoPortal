@@ -23,6 +23,10 @@ public class MyUserService {
         return userRepository.findByName(name).get();
     }
 
+    public MyUser getById(long id) {
+        return userRepository.findById(id).get();
+    }
+
     public MyUser register(UserCredentials user) {
         try {
             getUserByName(user.getUserName());

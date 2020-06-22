@@ -10,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Transient;
+import java.time.LocalDateTime;
 
 @Data
 @NoArgsConstructor
@@ -26,5 +27,9 @@ public class Recommendation {
 
     private String comment;
 
+    private LocalDateTime date;
+
     private long videoId;
+
+    private long userId;
 }

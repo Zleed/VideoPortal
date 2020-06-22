@@ -1,6 +1,7 @@
-import React, {createContext, useState} from "react";
+import React, {createContext, useContext, useState} from "react";
 import Axios from "axios";
 import Cookies from "universal-cookie/cjs/Cookies";
+import {UserContext} from "./UserContext";
 
 export const VideoContext = createContext();
 
@@ -10,6 +11,7 @@ export function VideoProvider(props) {
     const [videoList, setVideoList] = useState([]);
     const [recommendationList, setRecommendationList] = useState([]);
     const [video, setVideo] = useState({});
+    const {userMethod} = useContext(UserContext);
 
     const videoMethod = {
         getAllVideo: () => {
@@ -31,7 +33,8 @@ export function VideoProvider(props) {
             data.preventDefault();
             Axios.post(`http://localhost:8762/video-service/video`, {
                 name: data.target.name.value,
-                url: data.target.url.value
+                url: data.target.url.value,
+                userId: data.target.userId.value
             }, {
                 headers: {
                     "Content-type": "application/json",
@@ -40,8 +43,7 @@ export function VideoProvider(props) {
                     "Authorization": `Bearer ${cookies.get('jwt')}`
                 }
             }).then(res => {
-                    console.log(cookies.get("jwt"));
-                    console.log(res.data);
+                    userMethod.flipFlag()
                 }
             )
         },
@@ -51,7 +53,8 @@ export function VideoProvider(props) {
             Axios.post(`http://localhost:8762/video-service/video/${data.target.videoId.value}`, {
                 videoId: data.target.videoId.value,
                 comment: data.target.comment.value,
-                rating: data.target.rating.value
+                rating: data.target.rating.value,
+                userId: data.target.userId.value
             }, {
                 headers: {
                     "Content-type": "application/json",
@@ -60,9 +63,8 @@ export function VideoProvider(props) {
                     "Authorization": `Bearer ${cookies.get('jwt')}`
                 }
             }).then(res => {
-                    console.log(res.data);
-                }
-            )
+                userMethod.flipFlag()
+            })
         }
     };
 

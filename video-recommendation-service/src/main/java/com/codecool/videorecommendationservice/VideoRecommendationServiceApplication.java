@@ -2,6 +2,7 @@ package com.codecool.videorecommendationservice;
 
 import com.codecool.videorecommendationservice.service.RecommendationService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
@@ -23,6 +24,7 @@ public class VideoRecommendationServiceApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(VideoRecommendationServiceApplication.class, args);
 	}
+
 
 	@Bean
     public Docket api() {

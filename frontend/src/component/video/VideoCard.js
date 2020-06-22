@@ -11,6 +11,7 @@ import ShareIcon from '@material-ui/icons/Share';
 import Rating from '@material-ui/lab/Rating';
 import {Link} from "react-router-dom";
 import VideoDetailsButton from "./VideoDetailsButton";
+import MyAvatar from "../avatar/MyAvatar";
 
 const useStyles = makeStyles(() => ({
     card: {
@@ -28,20 +29,20 @@ const useStyles = makeStyles(() => ({
 
 export default function VideoCard(props) {
     const classes = useStyles();
+    const date = props.video.date.split("T")[0];
+    const time = props.video.date.split("T")[1].split(".")[0];
 
     return (
         <Card className={classes.card}>
             <CardHeader
                 avatar={
-                    <Avatar aria-label="recipe" className={classes.avatar}>
-                        R
-                    </Avatar>
+                    <MyAvatar userId={props.video.userId}/>
                 }
                 action={
                     <VideoDetailsButton/>
                 }
                 title={props.video.name}
-                subheader="September 14, 2016"
+                subheader={date+"   "+time}
             />
 
             <Link to={`/video/${props.video.id}`}>

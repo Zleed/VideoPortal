@@ -5,6 +5,7 @@ import Grid from "@material-ui/core/Grid";
 import {VideoContext} from "../../context/VideoContext";
 import {UserContext} from "../../context/UserContext";
 import NavBar from "../navbar/NavBar";
+import Cookies from "universal-cookie";
 
 const useStyles = makeStyles(() => ({
     textField: {
@@ -36,6 +37,7 @@ export default function ShareVideo() {
     const {videoMethod} = useContext(VideoContext);
     const {userMethod} = useContext(UserContext);
     const classes = useStyles();
+    const cookies = new Cookies();
 
     const message = () => {
         return (userMethod.ifSinged()) ? <h1>Login to share videos</h1> : <h1>Welcome</h1>
@@ -47,6 +49,7 @@ export default function ShareVideo() {
             <Paper className={classes.paper}>
                 {message()}
                 <form onSubmit={videoMethod.postVideo} noValidate autoComplete="off" hidden={userMethod.ifSinged()}>
+                    <input name="userId" value={cookies.get("userId")} hidden/>
                     <Grid container direction="column" alignItems="center">
                         <Grid item>
                             <TextField name="name" id="outlined-basic" label="Title" variant="outlined"/>

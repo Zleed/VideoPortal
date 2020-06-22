@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Data
 @NoArgsConstructor
@@ -26,7 +27,11 @@ public class Video {
     @OneToOne(mappedBy = "video", cascade = CascadeType.ALL)
     private Rating rating;
 
+    private LocalDateTime date;
+
     @Transient
     private RecommendationModel[] recommendationList;
+
+    private long userId;
 
 }
