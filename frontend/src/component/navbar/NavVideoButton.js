@@ -6,11 +6,13 @@ import Popper from '@material-ui/core/Popper';
 import MenuItem from '@material-ui/core/MenuItem';
 import MenuList from '@material-ui/core/MenuList';
 import Button from "@material-ui/core/Button";
+import {useHistory} from "react-router-dom";
 
 export default function NavVideoButton(props) {
 
     const [open, setOpen] = React.useState(false);
     const anchorRef = React.useRef(null);
+    const history = useHistory();
 
     const handleToggle = () => {
         setOpen((prevOpen) => !prevOpen);
@@ -61,9 +63,10 @@ export default function NavVideoButton(props) {
                         <Paper>
                             <ClickAwayListener onClickAway={handleClose}>
                                 <MenuList autoFocusItem={open} id="menu-list-grow" onKeyDown={handleListKeyDown}>
-                                    <MenuItem onClick={handleClose}>Featured</MenuItem>
-                                    <MenuItem onClick={handleClose}>Top rated</MenuItem>
-                                    <MenuItem onClick={handleClose}>All videos</MenuItem>
+                                    <MenuItem onClick={() => history.push("/featured")}>Featured</MenuItem>
+                                    <MenuItem onClick={() => history.push("/toprated")}>Top rated</MenuItem>
+                                    <MenuItem onClick={() => history.push("/popular")}>Popular</MenuItem>
+                                    <MenuItem onClick={() => history.push("/favourite")}>Favourites</MenuItem>
                                 </MenuList>
                             </ClickAwayListener>
                         </Paper>

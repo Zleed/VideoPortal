@@ -13,6 +13,13 @@ export function UserProvider(props) {
     const letter = useRef();
     const [flag, setFlag] = useState(true);
 
+    const [header] = useState({
+        "Content-type": "application/json",
+        "Access-Control-Allow-Origin": "http://localhost:3000",
+        "Accept": "application/json",
+        "Authorization": `Bearer ${cookies.get('jwt')}`
+    });
+
     const userMethod = {
 
         login: (data) => {
@@ -21,8 +28,8 @@ export function UserProvider(props) {
                 userName: data.target.username.value,
                 password: data.target.password.value
             }).then(res => {
-                cookies.set('jwt', res.data.token, {path:"/", maxAge: 36000});
-                cookies.set('userId', res.data.id, {path:"/", maxAge: 36000});
+                cookies.set('jwt', res.data.token, {path: "/", maxAge: 36000});
+                cookies.set('userId', res.data.id, {path: "/", maxAge: 36000});
                 setFlag(!flag);
                 history.push("/")
             }).catch(e => {
@@ -37,7 +44,7 @@ export function UserProvider(props) {
                 password: data.target.password.value
             }).then(res => {
                 history.push("/")
-            }).catch( e =>
+            }).catch(e =>
                 alert("Username is already taken")
             );
         },
@@ -45,22 +52,15 @@ export function UserProvider(props) {
         logout: () => {
             cookies.remove("jwt");
             cookies.remove("userId");
+            cleanCookies();
             setFlag(!flag);
             alert("Logged out.")
         },
 
         ifSinged: () => {
             return (cookies.get("jwt") === undefined);
-            cleanCookies()
         },
 
-        getFirstLetterUserName: (id) => {
-            Axios.get(`http://localhost:8762/user/name/${id}`)
-                .then( (res) => {
-                    letter.current = res.data;
-                });
-            return letter.current;
-        },
         flipFlag: () => {
             setFlag(!flag);
         }

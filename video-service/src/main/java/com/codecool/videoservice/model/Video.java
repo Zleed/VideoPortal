@@ -1,5 +1,6 @@
 package com.codecool.videoservice.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -24,9 +25,6 @@ public class Video {
 
     private String youTubeId;
 
-    @OneToOne(mappedBy = "video", cascade = CascadeType.ALL)
-    private Rating rating;
-
     private LocalDateTime date;
 
     @Transient
@@ -34,4 +32,13 @@ public class Video {
 
     private long userId;
 
+    private int rating;
+
+    @JsonIgnore
+    private int numberOfVotes;
+
+    @JsonIgnore
+    private int sumOfRating;
+
+    private int popularity;
 }

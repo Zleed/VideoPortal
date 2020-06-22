@@ -17,7 +17,7 @@ const useStyles = makeStyles(() => ({
         fontSize: "0.8em",
         height: "5em",
         width: "7em",
-    },
+    }
 }));
 
 export default function NavBar() {
@@ -49,7 +49,7 @@ export default function NavBar() {
                 <Button onClick={LogoutClickEvent} className={classes.button}>Logout</Button>
             </ButtonGroup>
             :
-            <ButtonGroup variant="text" color="inherit" aria-label="text primary button group">
+            <ButtonGroup className={classes.right} fullWidth variant="text" color="inherit" aria-label="text primary button group">
                 <Button onClick={LoginClickEvent} className={classes.button}>Login</Button>
                 <Button onClick={RegisterClickEvent} className={classes.button}>register</Button>
             </ButtonGroup>

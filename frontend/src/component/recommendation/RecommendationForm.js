@@ -1,6 +1,5 @@
 import React, {useContext, useState} from "react";
 import {makeStyles, TableCell, TableRow} from "@material-ui/core";
-import Avatar from "@material-ui/core/Avatar";
 import Rating from "@material-ui/lab/Rating";
 import {blue} from "@material-ui/core/colors";
 import Button from "@material-ui/core/Button";

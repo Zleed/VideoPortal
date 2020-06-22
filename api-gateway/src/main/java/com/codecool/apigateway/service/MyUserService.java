@@ -40,4 +40,8 @@ public class MyUserService {
         }
         throw new BadCredentialsException("Username is already taken.");
     }
+
+    public void save(MyUser user) {
+        userRepository.save(user);
+    }
 }

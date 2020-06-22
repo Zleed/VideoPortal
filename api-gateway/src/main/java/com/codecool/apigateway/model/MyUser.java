@@ -5,7 +5,9 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Data
 @NoArgsConstructor
@@ -26,5 +28,9 @@ public class MyUser {
     @Singular("roles")
     @ElementCollection(fetch = FetchType.EAGER)
     private List<String> roles = new ArrayList<>();
+
+    @Singular
+    @ElementCollection(fetch = FetchType.EAGER)
+    private Set<Long> favouriteVideos = new HashSet<>();
 
 }
