@@ -1,10 +1,10 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import './App.css';
 import VideoPage from "./page/VideoPage";
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import HomePage from "./page/HomePage";
 import ShareVideo from "./component/video/ShareVideo";
-import {VideoContext, VideoProvider} from "./context/VideoContext";
+import {VideoProvider} from "./context/VideoContext";
 import {UserProvider} from "./context/UserContext";
 import Login from "./page/Login";
 import Register from "./page/Register";

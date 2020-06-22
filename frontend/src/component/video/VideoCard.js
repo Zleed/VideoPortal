@@ -36,12 +36,8 @@ export default function VideoCard(props) {
     return (
         <Card className={classes.card}>
             <CardHeader
-                avatar={
-                    <MyAvatar userId={props.video.userId}/>
-                }
-                action={
-                    <VideoDetailsButton/>
-                }
+                avatar={<MyAvatar userId={props.video.userId}/>}
+                action={<VideoDetailsButton/>}
                 title={props.video.name}
                 subheader={date + "   " + time}
             />

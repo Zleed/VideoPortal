@@ -6,7 +6,7 @@ import {UserContext} from "../context/UserContext";
 
 export default function HomePage() {
 
-    const {videoList, popularList, featuredList, topRatedList, videoMethod} = useContext(VideoContext);
+    const {popularList, featuredList, topRatedList, videoMethod} = useContext(VideoContext);
     const {flag} = useContext(UserContext);
 
     useEffect(() => {
